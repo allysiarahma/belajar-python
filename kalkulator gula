@@ -1,0 +1,42 @@
+def penjelasan_gula():
+    print("=== Penjelasan Kebutuhan Gula Harian ===")
+    print("Organisasi Kesehatan Dunia (WHO) merekomendasikan:")
+    print("- Konsumsi gula tambahan maksimal 10% dari total kebutuhan energi harian.")
+    print("- Untuk manfaat tambahan, disarankan kurang dari 5% (sekitar 25 gram atau 6 sendok teh per hari untuk orang dewasa).")
+    print("Gula tambahan terdapat pada makanan/minuman manis seperti soda, kue, permen, dan sebagainya.\n")
+
+def kalkulator_gula():
+    print("=== Kalkulator Kebutuhan Gula Harian ===")
+    try:
+        usia = int(input("Masukkan usia Anda (tahun): "))
+        jenis_kelamin = input("Masukkan jenis kelamin Anda (L/P): ").strip().upper()
+        konsumsi_gula = float(input("Berapa gram gula yang Anda konsumsi hari ini?: "))
+
+        # Asumsi kebutuhan kalori rata-rata per hari berdasarkan usia dan jenis kelamin
+        if usia >= 18:
+            if jenis_kelamin == "L":
+                kebutuhan_kalori = 2500
+            else:
+                kebutuhan_kalori = 2000
+        else:
+            kebutuhan_kalori = 1800  # rata-rata untuk anak-anak/remaja
+
+        batas_gula_gram = (0.10 * kebutuhan_kalori) / 4  # 1 gram gula = 4 kalori
+        disarankan_maksimal = (0.05 * kebutuhan_kalori) / 4
+
+        print(f"\nBatas maksimal gula harian (10% dari kalori): {batas_gula_gram:.2f} gram")
+        print(f"Disarankan untuk menjaga di bawah: {disarankan_maksimal:.2f} gram")
+
+        if konsumsi_gula > batas_gula_gram:
+            print("⚠️ Anda telah melebihi batas konsumsi gula harian!")
+        elif konsumsi_gula > disarankan_maksimal:
+            print("✅ Konsumsi gula Anda masih dalam batas, tapi disarankan untuk dikurangi.")
+        else:
+            print("🎉 Konsumsi gula Anda berada di tingkat yang sehat.")
+
+    except ValueError:
+        print("Input tidak valid. Pastikan Anda memasukkan angka dengan benar.")
+
+# Jalankan program
+penjelasan_gula()
+kalkulator_gula()
